@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+
+<h1>Student List</h1>
+
+<a href="{% url 'student_create' %}">Register Student</a>
+
+{% for student in students %}
+    <p>
+        {{ student.student_name }} -
+        {{ student.program }} -
+        Year {{ student.year_level }} -
+        {{ student.email }}
+        |
+        <a href="{% url 'student_update' student.pk %}">Edit</a>
+        |
+        <a href="{% url 'student_delete' student.pk %}">Delete</a>
+    </p>
+{% empty %}
+    <p>No students found.</p>
+{% endfor %}
+
+</body>
+</html>
